@@ -1,27 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabriel Coaquira Ale</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:         #0B132B;
-      --surface:    rgba(255,255,255,0.04);
-      --border:     rgba(72,202,228,0.2);
-      --border-h:   rgba(72,202,228,0.5);
-      --cyan:       #48CAE4;
-      --cyan-dim:   rgba(72,202,228,0.6);
-      --text:       #F4F6F9;
-      --text-dim:   rgba(244,246,249,0.6);
+      --bg: #0B132B;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(72,202,228,0.2);
+      --cyan: #48CAE4;
+      --text: #F4F6F9;
+      --text-dim: rgba(244,246,249,0.6);
       --text-faint: rgba(244,246,249,0.25);
-      --gold:       #E0A96D;
-      --gold-h:     #F7D69E;
-      --radius:     12px;
+      --accent: #E0A96D;
     }
 
     html { scroll-behavior: smooth; }
@@ -32,18 +27,17 @@
       font-family: 'Raleway', sans-serif;
       font-size: 16px;
       font-weight: 300;
-      line-height: 1.75;
+      line-height: 1.6;
     }
 
-  
+    /* Navigation */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11,19,43,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 0.5px solid var(--border);
+      background: rgba(11,19,43,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
       padding: 0 5vw;
       height: 60px;
       display: flex;
@@ -53,65 +47,59 @@
 
     .nav-brand {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--cyan);
-      letter-spacing: 0.05em;
       text-decoration: none;
+      letter-spacing: 0.03em;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
     }
 
     .nav-links a {
       font-size: 13px;
-      font-weight: 400;
       color: var(--text-dim);
       text-decoration: none;
       letter-spacing: 0.04em;
-      transition: color 0.25s;
     }
 
     .nav-links a:hover { color: var(--cyan); }
 
+    /* Main */
     main {
       max-width: 820px;
       margin: 0 auto;
       padding: 60px 24px 80px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
 
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 36px;
+    }
+
+    /* Hero */
     .hero {
-      background: var(--surface);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px 36px;
       display: flex;
       align-items: center;
-      gap: 32px;
-      transition: border-color 0.3s;
+      gap: 28px;
     }
-
-    .hero:hover { border-color: var(--border-h); }
 
     .avatar {
-      width: 88px;
-      height: 88px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      border: 1.5px solid rgba(72,202,228,0.4);
-      background: rgba(72,202,228,0.07);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      background: rgba(72,202,228,0.08);
       flex-shrink: 0;
       overflow: hidden;
     }
@@ -120,40 +108,22 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      border-radius: 50%;
     }
 
-    .hero-content h1 {
+    h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 600;
       color: var(--cyan);
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      margin-bottom: 6px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .hero-content h1::after {
-      content: '';
-      display: block;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--cyan) 35%, #7FDBF5 65%, transparent);
-      border-radius: 2px;
-      position: absolute;
-      bottom: -4px;
-      left: -5%;
-      width: 110%;
-    }
-
-    .hero-role {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--text-dim);
-      margin: 14px 0 16px;
+      margin-bottom: 4px;
       letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
     }
 
     .tags {
@@ -164,120 +134,132 @@
 
     .tag {
       font-size: 11px;
-      font-weight: 400;
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 0.5px solid rgba(72,202,228,0.35);
-      color: var(--cyan-dim);
-      letter-spacing: 0.07em;
+      padding: 4px 10px;
+      border-radius: 16px;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    .section-box {
-      background: var(--surface);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      transition: border-color 0.3s, background 0.3s;
-    }
-
-    .section-box:hover {
-      border-color: var(--border-h);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .sec-eyebrow {
+    /* Sections */
+    .label {
       font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--cyan-dim);
+      color: var(--cyan);
       margin-bottom: 8px;
     }
 
-    .sec-title {
+    h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 600;
       color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: rgba(244,246,249,0.7);
+      line-height: 1.7;
       margin-bottom: 16px;
     }
 
-    .sec-body {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(244,246,249,0.7);
-      line-height: 1.8;
-    }
-
     .divider {
-      height: 0.5px;
+      height: 1px;
       background: var(--border);
-      margin: 20px 0;
+      margin: 16px 0;
     }
 
-    .curiosidades-list {
+    /* Lists */
+    .list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 8px;
     }
 
-    .curiosidades-list li {
+    .list li {
       font-size: 14px;
-      font-weight: 300;
-      color: rgba(244,246,249,0.7);
-      padding: 10px 14px;
-      background: rgba(72,202,228,0.04);
-      border: 0.5px solid rgba(72,202,228,0.15);
-      border-radius: 8px;
+      padding: 10px 12px;
+      background: rgba(72,202,228,0.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: rgba(244,246,249,0.75);
       display: flex;
-      align-items: flex-start;
       gap: 10px;
-      line-height: 1.6;
-      transition: background 0.25s, border-color 0.25s;
+      align-items: flex-start;
+      line-height: 1.5;
     }
 
-    .curiosidades-list li:hover {
-      background: rgba(72,202,228,0.08);
-      border-color: rgba(72,202,228,0.35);
-    }
-
-    .curiosidades-list li .emoji {
+    .list .icon {
       font-size: 1rem;
       flex-shrink: 0;
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
-    a.inline-link {
-      color: var(--gold);
+    /* Grid para conocidos */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .contact-card {
+      padding: 16px;
+      background: rgba(72,202,228,0.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-align: center;
+      transition: background 0.25s, border-color 0.25s;
+      text-decoration: none;
+    }
+
+    .contact-card:hover {
+      background: rgba(72,202,228,0.1);
+      border-color: rgba(72,202,228,0.4);
+    }
+
+    .contact-card-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+
+    .contact-card-role {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    /* Links */
+    a.link {
+      color: var(--accent);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.25s;
     }
 
-    a.inline-link:hover {
-      color: var(--gold-h);
-      text-decoration: underline;
-    }
+    a.link:hover { color: var(--cyan); }
 
-    /* ── CONTACT BUTTONS ── */
-    .contact-row {
+    /* Buttons */
+    .buttons {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
     }
 
-    .contact-btn {
+    .btn {
       flex: 1;
-      min-width: 120px;
-      padding: 12px 16px;
-      border-radius: 8px;
-      border: 0.5px solid rgba(72,202,228,0.3);
+      min-width: 140px;
+      padding: 11px 16px;
+      border: 1px solid var(--cyan);
+      border-radius: 6px;
       background: transparent;
       color: var(--cyan);
-      font-family: 'Raleway', sans-serif;
       font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.04em;
@@ -287,33 +269,36 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: background 0.25s, border-color 0.25s, color 0.25s;
     }
 
-    .contact-btn:hover {
+    .btn:hover {
       background: rgba(72,202,228,0.1);
-      border-color: var(--border-h);
-      color: #7FDBF5;
+      border-color: var(--cyan);
     }
 
+    /* Footer */
     footer {
       text-align: center;
-      padding: 28px 0 40px;
+      padding: 24px;
       font-size: 12px;
       color: var(--text-faint);
-      letter-spacing: 0.06em;
-      border-top: 0.5px solid var(--border);
+      letter-spacing: 0.05em;
+      border-top: 1px solid var(--border);
       max-width: 820px;
       margin: 0 auto;
-      line-height: 2;
+      line-height: 1.8;
     }
 
+    /* Mobile */
     @media (max-width: 600px) {
-      .hero { flex-direction: column; text-align: center; padding: 28px 24px; }
+      .hero { flex-direction: column; text-align: center; }
       .tags { justify-content: center; }
-      .contact-row { flex-direction: column; }
-      .contact-btn { min-width: unset; }
+      .buttons { flex-direction: column; }
+      .btn { min-width: auto; }
       main { padding: 40px 16px 60px; }
+      .card { padding: 24px; }
+      h1 { font-size: 1.7rem; }
+      .grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
     }
   </style>
   <meta name="google-site-verification" content="4eS2603dptVcd3BtezRGB0Nar96R0l6QVzsaQ-Vih5I" />
@@ -323,128 +308,98 @@
   <nav>
     <a href="#inicio" class="nav-brand">Gabriel Coaquira</a>
     <ul class="nav-links">
-      <li><a href="#sobre-mi">sobre mí</a></li>
-      <li><a href="#carrera">carrera</a></li>
-      <li><a href="#contacto">contacto</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#carrera">Carrera</a></li>
+      <li><a href="#conocidos">Conocidos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
   <main>
-
-    <section class="hero" id="inicio">
+    <section class="card hero" id="inicio">
       <div class="avatar">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAC0ALQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDwKloopAFFFFABRRilxQAlOooxQAUUtFACYoxTsUYpANxRTsUYoAbSYp1GKLgNNJTqKYDaKWkoAKKKKACiiigAoopcUAJS0tFABRRTsUAJS4pcUu2kAmKMU8ClAoAZilxT8UbaBkeKMVJtpMUAMpuKkIpCKAGEYpKdikxQIbSEU6jFMBlFLikoAKKKKACnUgpaAAUtFKBSAAKcBmgCnAUAJinhaUCpAtJsYwLTglShKkWLPapuOxB5dGz2q2Ival8r2ouFimUppWrhi9qjaPFFwsVStNK1ZZPaoitO4iEimkVKRTMVQEZFJTzTcUANopaSgQlFLRTAKWkpRSAUU4UgpwFACgU9RSAVKi5oYxVXNTpHSRp7VdiirNsojWGrCQe1WYYM9qvw2me1K4zNW2J7U77MfStyOyPpUhseOlK4HOtbY7VBJb47V0clnjtVOa19qaEc+8OO1V3StmW3x2qjNFimFjOZajIq06VAy1SEyEimGpSKjIqhDSKSlNJQAlFFFAgFOFJSigBwp4pgqRaBjlFWEXkVEoqzGOlSxosRJkitCCHOMCq0K9K1rWPkVDGWbW1yelbFtZ7iABSWVvu2gDmvUvCPha2igi1DU1B8z/URMOv+0RUN2GcnpvhDU9RUPb2cjJ/fPyj8zWnL8OtZRNwt0b2WQE16as1wbv7MqBY1bGQMcCtKCTeGGGwpxuPelB8zsDdj5+1HQbrT3KXNvJEf9petYdxagZ4r6avbG21C2aC6hWWNhghh0+npXjXjLws2hXg2Za2lyY2P8j71rytE3ueZXMGM8Vlzxe1dLdxYY8Vi3KdaQzElTGaquK0JlqnIKaAqsKjIqZhURrREkZppp5ppoASiiigQUopopR1oAeKkU1GKkWgZMlW4uoqolW4jgioYzRt16VtWagkVi25rasmGRUMZ2fhexF9qttbkcSSBT9M817y1tCAh2L+6GE9AK8S8DTrF4hs2YgDzAMn34r2i7ja4DRoSCBz7gipeiAwhPOt6xjfczkjK/wBK6eMBIlHPA71z8FvcRs+CsZA7nHNXItQdTGjq7ADax9TWVOfKNq5rBhwCQCegrn/G1gl/4YusgF4R5qH0x1/SiSUtdB2l5XnrwD6UutXwPhK/uGPBiZQT3J4raNbm0E42PAbxOWrAu15NdBev1rn7puTTEZE461QkrQnPWs+TrVDKz1G1SvUZrQkiNNNPNMNACUUUUCEFKKKKAHinioxTwaBkyHFWozVNTU6NUsaNOB617WXGKwInrRt5cY5qGM7TSbwwzRuGwQQa970PWYtY0uK5RgZkAWVe+fX6V80Wl1txzXW6D4ludJnSWCUqR+RHvUtXBHr93LLHMVfPzZHTg1PbXYWExsoZv4c9veuag+IFjeRAXMQjfHJA3D/EU6XxVpIhIF1164jOa5+SSZdzZMjfbESMiTDcYHBNc58RPEEaWyaPbupKndNt6A9lrM1Hx0sMDxaamx2GDO/3se3pXn97ftM7O7EsepJrSEGiWyteTZzzWJcvnNWrifOeay5pM1uIrTN1qlIanlbk1Wc00BE5qI09qYatEjDTDTzTDQA2ilooEJS00UtMBwNOBpgp1IZIpqZTVcGpFNJgW0fmrsMuKzEarCSYqSjainx0NaEN3jvXOxzY71ZS4x3qbDR0qXx45p51A4+9XOrdH1pftJx1osBsyXpI61Smuc55qg1z71C8/vQBNLNnvVOSTNMebNQM9MQO+agZuaVmzUZNWkTcQmmGlJppNMBppppTTTQAhopCaKYhKcDTaKAH0Cmg06kA4Gng1GKcDQMlBqQNUANOBpWAtK9SCTjrVMNTw9Jody751HnH1qnvpd9Kwy0ZfemGWq5akLe9NIVyUvUZamFqQtTSEKTTSaTNNJpiFNMNBam5oAM0hopKAG0UUUwCiiigApwNNpRQA6lzTaXNIB2acDUdLmgZIDS5qPNGaAJd1G6o80ZoAk3UZqPNLmgB2aTNNzRmgBSaaTSE0hNAC5pKKTNAgpM0ZpKYBRRRQAmaWkooAWiiigBc0ZpKKAHUuaZSigB1FJRmgBc0uaTNFIBc0maTNFMYuaKSjNIBaSkzRmmICaSiigAooooAKKSigBKWiigAoFFFAC0UUUAFKKKKACjNFFAATRmiigAozRRQAlFFFABRRRQAUlFFABR2oooAKKKKAP/Z" alt="Luna desde Arequipa">
+        <img src="./imagen1.jpeg" alt="Descripción de la imagen">
       </div>
-      <div class="hero-content">
+      <div>
         <h1>Gabriel Coaquira Ale</h1>
-        <p class="hero-role">Estudiante de Ciencia de la Computación · UCSP</p>
+        <p class="subtitle">Estudiante de Ciencia de la Computación · UCSP</p>
         <div class="tags">
           <span class="tag">Natación 🏊🏽</span>
           <span class="tag">Guitarra 🎸</span>
-          <span class="tag">Karate 🤓</span>
+          <span class="tag">Lógica 🤓</span>
         </div>
       </div>
     </section>
 
-    <section class="section-box" id="sobre-mi">
-      <div class="sec-eyebrow">Sobre mí</div>
-      <h2 class="sec-title">Un poco acerca de mí</h2>
-      <p class="sec-body">
-        ¡Qué tal! Soy Gabriel Armando Coaquira Ale, estudiante de la carrera de Ciencia de la Computación en la
-        <a href="https://ucsp.edu.pe/" target="_blank" class="inline-link">Universidad Católica San Pablo (UCSP)</a>.
-      </p>
+    <section class="card" id="sobre-mi">
+      <div class="label">Sobre mí</div>
+      <h2>Un poco acerca de mí</h2>
+      <p>¡Qué tal! Soy Gabriel Armando Coaquira Ale, estudiante de la carrera de Ciencia de la Computación en la <a href="https://ucsp.edu.pe/" target="_blank" class="link">Universidad Católica San Pablo (UCSP)</a>.</p>
 
       <div class="divider"></div>
 
-      <div class="sec-eyebrow" style="margin-bottom: 12px;">curiosidades</div>
-      <ul class="curiosidades-list">
-        <li>
-          <span class="emoji">🔵</span>
-          <span>Mi color favorito es el azul.</span>
-        </li>
-        <li>
-          <span class="emoji">🏫</span>
-          <span>Cursé parte de mi secundaria en
-            <a href="https://academiamendel.edu.pe/" target="_blank" class="inline-link">Colegios y Academia Mendel</a>.
-          </span>
-        </li>
-        <li>
-          <span class="emoji">🏊🏽‍♂️</span>
-          <span>Mi deporte representativo es la natación.</span>
-        </li>
-        <li>
-          <span class="emoji">🎸</span>
-          <span>En mis tiempos libres me gusta practicar tocando guitarra.</span>
-        </li>
-        <li>
-          <span class="emoji">📚</span>
-          <span>Soy antiguo profesor preuniversitario del curso de lógica.</span>
-        </li>
+      <div class="label">Curiosidades</div>
+      <ul class="list">
+        <li><span class="icon">🔵</span><span>Mi color favorito es el azul.</span></li>
+        <li><span class="icon">🏫</span><span>Cursé parte de mi secundaria en <a href="https://academiamendel.edu.pe/" target="_blank" class="link">Colegios y Academia Mendel</a>.</span></li>
+        <li><span class="icon">🏊🏽‍♂️</span><span>Mi deporte representativo es la natación.</span></li>
+        <li><span class="icon">🎸</span><span>En mis tiempos libres me gusta practicar tocando guitarra.</span></li>
+        <li><span class="icon">📚</span><span>Soy antiguo profesor preuniversitario del curso de lógica.</span></li>
       </ul>
     </section>
 
-    <section class="section-box" id="Carrera">
-      <div class="sec-eyebrow">Carrera</div>
-      <h2 class="sec-title">Sobre mi carrera</h2>
-      <p class="sec-body">
-        La carrera de <strong style="color: var(--text); font-weight: 500;">Ciencia de la Computación</strong> en la
-        <strong style="color: var(--text); font-weight: 500;">UCSP</strong> ofrece una educación científica de nivel global
-        debido a su alineamiento con los estándares de la <strong style="color: var(--text); font-weight: 500;">ACM</strong>.
-        Esta excelencia tecnológica se complementa con una sólida formación humanista e integral, orientada a la ética
-        y el compromiso social. A través de ello,se busca el liderazgo y la innovación con el propósito claro de
-        diseñar tecnología con valores para transformar positivamente la sociedad.
-      </p>
+    <section class="card" id="carrera">
+      <div class="label">Carrera</div>
+      <h2>Sobre mi carrera</h2>
+      <p>La carrera de <strong>Ciencia de la Computación</strong> en la <strong>UCSP</strong> ofrece una educación científica de nivel global debido a su alineamiento con los estándares de la <strong>ACM</strong>. Esta excelencia tecnológica se complementa con una sólida formación humanista e integral, orientada a la ética y el compromiso social. A través de ello, se busca el liderazgo y la innovación con el propósito claro de diseñar tecnología con valores para transformar positivamente la sociedad.</p>
     </section>
 
-    <section class="section-box" id="Cursos">
-      <div class="sec-eyebrow">Cursos</div>
-      <h2 class="sec-title">Mis cursos</h2>
-      <div class="divider"></div>
-
-      <div class="sec-eyebrow" style="margin-bottom: 12px;">curiosidades</div>
-      <ul class="curiosidades-list">
-        <li>
-          <span>Fundamentos de Programación</span>
-          <span>Docente:</span>
-        </li>
-        <li>
-          <span>Introducción a la Computación</span>
-          <span> Docente: Ernesto Cuadros
-            <a href="https://academiamendel.edu.pe/" target="_blank" class="inline-link">Página del profesor</a>.
-          </span>
-        </li>
-        <li>
-          <span>Fundamentos Matemáticos de Programación</span>
-          <span>Docente:</span>
-        </li>
-        <li>
-          <span>Introducción a la vida Universitaria (IVU)</span>
-          <span>Docente:</span>
-        </li>
-	<li>
-          <span>Lógica</span>
-          <span>Docente:</span>
-        </li>
-        <li>
-          <span>Lenguaje</span>
-          <span>Docente:</span>
-        </li>
+    <section class="card" id="cursos">
+      <div class="label">Cursos</div>
+      <h2>Mis cursos</h2>
+      <ul class="list">
+        <li><span><strong>Fundamentos de Programación</strong><br>Docente: Kelly Vizconde La Motta <a href="https://www.linkedin.com/in/kelly-vizconde-la-motta-3a57a4143/" target="_blank" class="link">✉ LinkedIn</a></span></li>
+        <li><span><strong>Introducción a la Computación</strong><br>Docente: Ernesto Cuadros <a href="https://socios.spc.org.pe/ecuadros/" target="_blank" class="link">Página</a> - <a href="https://www.linkedin.com/in/ecuadrosv/" target="_blank" class="link">✉ LinkedIn</a></span></li>
+        <li><span><strong>Fundamentos Matemáticos de Programación</strong><br>Docente: Sabrina Graciela Suárez Calcina</span></li>
+        <li><span><strong>Introducción a la vida Universitaria (IVU)</strong><br>Docente: Pierina Pacheco Leyton</span></li>
+        <li><span><strong>Lógica</strong><br>Docente: Yahaira Byrne Rivera</span></li>
+        <li><span><strong>Lenguaje</strong><br>Docente: Angel Rodríguez Cruz</span></li>
       </ul>
     </section>
 
-
-    <section class="section-box" id="contacto">
-      <div class="sec-eyebrow">Contacto</div>
-      <h2 class="sec-title">Hablemos</h2>
-      <p class="sec-body" style="margin-bottom: 20px;">
-        ¿Tienes alguna pregunta o quieres ponerte en contacto? Escríbeme.
-      </p>
-      <div class="contact-row">
-        <a href="gabriel.coaquira@ucsp.edu.pe" class="contact-btn">✉ LinkedIn</a>
-        <a href="https://ucsp.edu.pe/" target="_blank" class="contact-btn">🎓 UCSP</a>
+    <section class="card" id="conocidos">
+      <div class="label">Conocidos</div>
+      <h2>Mis compañeros</h2>
+      <p>Conoce a mis compañeros de carrera en UCSP.</p>
+      <div class="grid">
+        <a href="https://jsalavaldez.github.io/" target="_blank" class="contact-card">
+          <div class="contact-card-name">Jose Salavaldez</div>
+          <div class="contact-card-role">Estudiante UCSP</div>
+        </a>
+        <a href="https://ackyul.github.io/yoshuanunez.github.io/" target="_blank" class="contact-card">
+          <div class="contact-card-name">Yoshua Josafat Nuñez</div>
+          <div class="contact-card-role">Estudiante UCSP</div>
+        </a>
+        <a href="https://angelfabianramosmunoz.github.io/" target="_blank" class="contact-card">
+          <div class="contact-card-name">Angel Fabian Ramos</div>
+          <div class="contact-card-role">Estudiante UCSP</div>
+        </a>
+        <a href="https://yulvillena-source.github.io/Yul_Villena/" target="_blank" class="contact-card">
+          <div class="contact-card-name">Yul Villena</div>
+          <div class="contact-card-role">Estudiante UCSP</div>
+        </a>
       </div>
     </section>
 
+    <section class="card" id="contacto">
+      <div class="label">Contacto</div>
+      <h2>Hablemos</h2>
+      <p>¿Tienes alguna pregunta o quieres ponerte en contacto? Escríbeme.</p>
+      <div class="buttons">
+        <a href="https://www.linkedin.com/in/gabriel-armando-coaquira-ale-353344419" target="_blank" class="btn">✉ LinkedIn</a>
+        <a href="https://ucsp.edu.pe/" target="_blank" class="btn">🎓 UCSP</a>
+      </div>
+    </section>
   </main>
 
   <footer>
